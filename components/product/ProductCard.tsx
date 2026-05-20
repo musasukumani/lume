@@ -40,6 +40,10 @@ export function ProductCard({ product }: Props) {
         <h3 className="font-serif text-lg font-light text-[#E8E0D0] leading-tight mb-2 group-hover:text-[#F5F0E8] transition-colors">
           {product.name}
         </h3>
+        <div className="flex items-center gap-1.5 mb-2">
+          <span className="text-[#C9A84C] text-xs tracking-wide">★★★★★</span>
+          <span className="text-white/25 text-xs">4.9</span>
+        </div>
         <div className="mt-auto flex items-center justify-between pt-3 border-t border-white/[0.07]">
           <span className="font-light text-[#E8D5B0]">${product.price.toFixed(2)}</span>
           {/* z-20 keeps button above the stretched link */}

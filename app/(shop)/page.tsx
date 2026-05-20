@@ -1,6 +1,9 @@
 import { createClient } from '@/lib/supabase/server'
 import { ProductCard } from '@/components/product/ProductCard'
 import { NewsletterStrip } from '@/components/home/NewsletterStrip'
+import { ReviewsSection } from '@/components/home/ReviewsSection'
+import { ExpertEndorsement } from '@/components/home/ExpertEndorsement'
+import { SocialFeed } from '@/components/home/SocialFeed'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/lib/types'
@@ -109,6 +112,9 @@ export default async function HomePage() {
         </p>
       </section>
 
+      {/* Expert Endorsement */}
+      <ExpertEndorsement />
+
       {/* Featured Products */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="flex items-end justify-between mb-8">
@@ -126,6 +132,9 @@ export default async function HomePage() {
           ))}
         </div>
       </section>
+
+      {/* Customer Reviews */}
+      <ReviewsSection />
 
       {/* Brand Story Banner */}
       <section className="bg-[#0A0A0A] border-y border-white/5 my-16">
@@ -161,6 +170,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Social Feed */}
+      <SocialFeed />
 
       {/* Newsletter */}
       <NewsletterStrip />

@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { AddToCart } from '@/components/product/AddToCart'
 import { RelatedProducts } from '@/components/product/RelatedProducts'
+import { ingredientsByCategory } from '@/lib/ingredients'
 import type { Product } from '@/lib/types'
 
 export const revalidate = 3600
@@ -64,7 +65,26 @@ export default async function ProductDetailPage({ params }: Props) {
           <p className="text-2xl font-light text-[#E8D5B0] mb-6">${p.price.toFixed(2)}</p>
           <p className="text-white/50 leading-relaxed text-sm">{p.description}</p>
           <AddToCart product={p} />
-          <div className="mt-8 pt-8 border-t border-white/[0.07] grid grid-cols-2 gap-4">
+
+          {/* Key Ingredients */}
+          <div className="mt-8 pt-8 border-t border-white/[0.07]">
+            <p className="text-[#C9A84C]/70 text-xs uppercase tracking-widest mb-4 font-light">
+              Key Ingredients
+            </p>
+            <div className="grid grid-cols-2 gap-3">
+              {ingredientsByCategory[p.category].map((ing) => (
+                <div
+                  key={ing.name}
+                  className="bg-white/[0.03] border border-white/[0.07] px-4 py-3"
+                >
+                  <p className="text-[#E8D5B0] text-sm font-light">{ing.name}</p>
+                  <p className="text-white/35 text-xs mt-0.5">{ing.benefit}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-6 grid grid-cols-2 gap-4">
             <div className="text-sm text-white/40">
               <p className="text-[#C9A84C]/70 text-xs uppercase tracking-widest mb-1 font-light">Free Shipping</p>
               On all orders

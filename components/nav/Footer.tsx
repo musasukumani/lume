@@ -27,10 +27,10 @@ export function Footer() {
         <div>
           <p className="text-white/60 font-medium mb-4 text-xs uppercase tracking-widest">Support</p>
           <ul className="space-y-3 text-sm">
-            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">FAQ</Link></li>
-            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Shipping</Link></li>
-            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Returns</Link></li>
-            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Contact</Link></li>
+            <li><Link href="/faq" className="hover:text-white/70 transition-colors duration-200">FAQ</Link></li>
+            <li><Link href="/shipping" className="hover:text-white/70 transition-colors duration-200">Shipping</Link></li>
+            <li><Link href="/returns" className="hover:text-white/70 transition-colors duration-200">Returns</Link></li>
+            <li><Link href="/contact" className="hover:text-white/70 transition-colors duration-200">Contact</Link></li>
           </ul>
         </div>
 
