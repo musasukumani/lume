@@ -9,7 +9,7 @@ export function Footer() {
           <p className="text-sm leading-relaxed mb-4">
             Natural skincare rooted in science. Formulated for every skin type.
           </p>
-          <Link href="/our-story" className="text-xs tracking-widest uppercase text-[#C9A84C]/60 hover:text-[#C9A84C] transition-colors duration-200">
+          <Link href="/our-story" className="text-xs tracking-widest uppercase text-[#C9A84C]/60 hover:text-white/70 transition-colors duration-200">
             Our Story →
           </Link>
         </div>
@@ -17,29 +17,29 @@ export function Footer() {
         <div>
           <p className="text-white/60 font-medium mb-4 text-xs uppercase tracking-widest">Shop</p>
           <ul className="space-y-3 text-sm">
-            <li><Link href="/shop" className="hover:text-[#C9A84C] transition-colors duration-200">All Products</Link></li>
-            <li><Link href="/shop?category=cleanser" className="hover:text-[#C9A84C] transition-colors duration-200">Cleansers</Link></li>
-            <li><Link href="/shop?category=serum" className="hover:text-[#C9A84C] transition-colors duration-200">Serums</Link></li>
-            <li><Link href="/shop?category=moisturizer" className="hover:text-[#C9A84C] transition-colors duration-200">Moisturizers</Link></li>
+            <li><Link href="/shop" className="hover:text-white/70 transition-colors duration-200">All Products</Link></li>
+            <li><Link href="/shop?category=cleanser" className="hover:text-white/70 transition-colors duration-200">Cleansers</Link></li>
+            <li><Link href="/shop?category=serum" className="hover:text-white/70 transition-colors duration-200">Serums</Link></li>
+            <li><Link href="/shop?category=moisturizer" className="hover:text-white/70 transition-colors duration-200">Moisturizers</Link></li>
           </ul>
         </div>
 
         <div>
           <p className="text-white/60 font-medium mb-4 text-xs uppercase tracking-widest">Support</p>
           <ul className="space-y-3 text-sm">
-            <li><Link href="#" className="hover:text-[#C9A84C] transition-colors duration-200">FAQ</Link></li>
-            <li><Link href="#" className="hover:text-[#C9A84C] transition-colors duration-200">Shipping</Link></li>
-            <li><Link href="#" className="hover:text-[#C9A84C] transition-colors duration-200">Returns</Link></li>
-            <li><Link href="#" className="hover:text-[#C9A84C] transition-colors duration-200">Contact</Link></li>
+            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">FAQ</Link></li>
+            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Shipping</Link></li>
+            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Returns</Link></li>
+            <li><Link href="#" className="hover:text-white/70 transition-colors duration-200">Contact</Link></li>
           </ul>
         </div>
 
         <div>
           <p className="text-white/60 font-medium mb-4 text-xs uppercase tracking-widest">Follow</p>
           <ul className="space-y-3 text-sm">
-            <li><a href="#" className="hover:text-[#C9A84C] transition-colors duration-200">Instagram</a></li>
-            <li><a href="#" className="hover:text-[#C9A84C] transition-colors duration-200">TikTok</a></li>
-            <li><a href="#" className="hover:text-[#C9A84C] transition-colors duration-200">Pinterest</a></li>
+            <li><a href="#" className="hover:text-white/70 transition-colors duration-200">Instagram</a></li>
+            <li><a href="#" className="hover:text-white/70 transition-colors duration-200">TikTok</a></li>
+            <li><a href="#" className="hover:text-white/70 transition-colors duration-200">Pinterest</a></li>
           </ul>
         </div>
       </div>

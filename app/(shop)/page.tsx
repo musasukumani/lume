@@ -143,7 +143,7 @@ export default async function HomePage() {
             </p>
             <Link
               href="/shop"
-              className="inline-block border border-white/20 text-white/50 px-6 py-2 text-xs tracking-widest uppercase hover:border-[#C9A84C]/50 hover:text-[#C9A84C] transition-colors"
+              className="inline-block border border-white/20 text-white/50 px-6 py-2 text-xs tracking-widest uppercase hover:border-white/40 hover:text-white/80 transition-colors"
             >
               Explore Collection
             </Link>

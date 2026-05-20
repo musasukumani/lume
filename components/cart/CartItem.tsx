@@ -33,7 +33,7 @@ export function CartItem({ item }: Props) {
           </div>
           <button
             onClick={() => removeItem(item.product.id)}
-            className="text-white/25 hover:text-[#C9A84C] transition-colors p-1 ml-2"
+            className="text-white/25 hover:text-white/70 transition-colors p-1 ml-2"
             aria-label="Remove item"
           >
             <X className="w-4 h-4" />
@@ -44,7 +44,7 @@ export function CartItem({ item }: Props) {
           <div className="flex items-center border border-white/10">
             <button
               onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-              className="px-3 py-1 text-white/40 hover:text-[#C9A84C] transition-colors"
+              className="px-3 py-1 text-white/40 hover:text-white/70 transition-colors"
             >
               −
             </button>
@@ -53,7 +53,7 @@ export function CartItem({ item }: Props) {
             </span>
             <button
               onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-              className="px-3 py-1 text-white/40 hover:text-[#C9A84C] transition-colors"
+              className="px-3 py-1 text-white/40 hover:text-white/70 transition-colors"
             >
               +
             </button>

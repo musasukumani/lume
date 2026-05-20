@@ -58,7 +58,7 @@ export function CartSummary() {
 
       <Link
         href="/shop"
-        className="block text-center text-xs text-white/30 hover:text-[#C9A84C] transition-colors mt-4 tracking-widest uppercase"
+        className="block text-center text-xs text-white/30 hover:text-white/60 transition-colors mt-4 tracking-widest uppercase"
       >
         Continue Shopping
       </Link>

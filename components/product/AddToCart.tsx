@@ -19,7 +19,7 @@ export function AddToCart({ product }: Props) {
       <div className="flex items-center border border-white/10">
         <button
           onClick={() => setQty(Math.max(1, qty - 1))}
-          className="px-3 py-2 text-white/40 hover:text-[#C9A84C] transition-colors text-lg leading-none"
+          className="px-3 py-2 text-white/40 hover:text-white/70 transition-colors text-lg leading-none"
         >
           −
         </button>
@@ -28,7 +28,7 @@ export function AddToCart({ product }: Props) {
         </span>
         <button
           onClick={() => setQty(qty + 1)}
-          className="px-3 py-2 text-white/40 hover:text-[#C9A84C] transition-colors text-lg leading-none"
+          className="px-3 py-2 text-white/40 hover:text-white/70 transition-colors text-lg leading-none"
         >
           +
         </button>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Cormorant_Garamond, Inter } from 'next/font/google'
+import { Suspense } from 'react'
 import './globals.css'
 import { Navbar } from '@/components/nav/Navbar'
 import { Footer } from '@/components/nav/Footer'
@@ -35,7 +36,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
       </head>
       <body>
-        <Navbar />
+        <Suspense fallback={null}>
+          <Navbar />
+        </Suspense>
         <main>{children}</main>
         <Footer />
       </body>

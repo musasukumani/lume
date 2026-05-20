@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { ShoppingBag, Menu, X } from 'lucide-react'
 import { useCartStore } from '@/lib/store/cart'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 const navLinks = [
@@ -18,11 +18,21 @@ export function Navbar() {
   const items = useCartStore((s) => s.items)
   const itemCount = items.reduce((sum, i) => sum + i.quantity, 0)
   const pathname = usePathname()
+  const searchParams = useSearchParams()
   const [menuOpen, setMenuOpen] = useState(false)
 
   function isActive(href: string) {
-    const path = href.split('?')[0]
-    return pathname === path
+    const [path, query] = href.split('?')
+    if (pathname !== path) return false
+    if (!query) {
+      // /shop with no query is only active when no category is selected
+      return path === '/shop' ? !searchParams.has('category') : true
+    }
+    const linkParams = new URLSearchParams(query)
+    for (const [key, val] of linkParams.entries()) {
+      if (searchParams.get(key) !== val) return false
+    }
+    return true
   }
 
   return (

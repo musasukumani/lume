@@ -33,7 +33,7 @@ export function ProductFilters() {
           className={`px-5 py-2 text-xs tracking-widest uppercase font-light transition-colors border ${
             active === value
               ? 'bg-gradient-to-r from-[#C9A84C] to-[#A8883A] text-[#0D0D0D] border-transparent font-medium'
-              : 'bg-transparent text-white/40 border-white/10 hover:border-[#C9A84C]/50 hover:text-[#C9A84C]'
+              : 'bg-transparent text-white/40 border-white/10 hover:border-white/30 hover:text-white/70'
           }`}
         >
           {label}
