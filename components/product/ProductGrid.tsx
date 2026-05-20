@@ -8,8 +8,8 @@ type Props = {
 export function ProductGrid({ products }: Props) {
   if (products.length === 0) {
     return (
-      <div className="text-center py-20 text-[#8C6B50]">
-        <p className="font-serif text-2xl">No products found</p>
+      <div className="text-center py-20 text-white/30">
+        <p className="font-serif text-2xl font-light">No products found</p>
       </div>
     )
   }

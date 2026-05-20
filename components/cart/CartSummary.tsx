@@ -30,19 +30,19 @@ export function CartSummary() {
   const itemCount = items.reduce((s, i) => s + i.quantity, 0)
 
   return (
-    <div className="bg-[#FDFAF6] rounded-lg border border-[#8C6B50]/20 p-6 sticky top-24">
-      <h2 className="font-serif text-2xl text-[#2D1A0E] mb-6">Order Summary</h2>
+    <div className="bg-white/[0.04] border border-white/[0.07] p-6 sticky top-24">
+      <h2 className="font-serif text-2xl font-light text-[#F5F0E8] mb-6">Order Summary</h2>
 
       <div className="space-y-3 text-sm mb-6">
-        <div className="flex justify-between text-[#8C6B50]">
+        <div className="flex justify-between text-white/40">
           <span>Subtotal ({itemCount} item{itemCount !== 1 ? 's' : ''})</span>
           <span>${total.toFixed(2)}</span>
         </div>
-        <div className="flex justify-between text-[#8C6B50]">
+        <div className="flex justify-between text-white/40">
           <span>Shipping</span>
-          <span className="text-green-600 font-medium">Free</span>
+          <span className="text-[#C9A84C] font-light">Free</span>
         </div>
-        <div className="border-t border-[#8C6B50]/20 pt-3 flex justify-between font-medium text-[#2D1A0E] text-base">
+        <div className="border-t border-white/[0.07] pt-3 flex justify-between font-light text-[#F5F0E8] text-base">
           <span>Total</span>
           <span>${total.toFixed(2)}</span>
         </div>
@@ -51,14 +51,14 @@ export function CartSummary() {
       <button
         onClick={handleCheckout}
         disabled={items.length === 0}
-        className="w-full bg-[#3D1F0F] text-white py-3 rounded font-medium hover:bg-[#2D1A0E] transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+        className="w-full bg-gradient-to-r from-[#C9A84C] to-[#A8883A] text-[#0D0D0D] py-3 text-xs tracking-widest uppercase font-semibold hover:opacity-90 transition-opacity disabled:opacity-30 disabled:cursor-not-allowed"
       >
         Proceed to Checkout
       </button>
 
       <Link
         href="/shop"
-        className="block text-center text-sm text-[#8C6B50] hover:text-[#2D1A0E] transition-colors mt-4 underline underline-offset-4"
+        className="block text-center text-xs text-white/30 hover:text-[#C9A84C] transition-colors mt-4 tracking-widest uppercase"
       >
         Continue Shopping
       </Link>

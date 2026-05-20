@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next'
+import path from 'path'
 
 const nextConfig: NextConfig = {
   images: {
@@ -8,6 +9,11 @@ const nextConfig: NextConfig = {
         hostname: 'images.unsplash.com',
       },
     ],
+    formats: ['image/avif', 'image/webp'],
+    minimumCacheTTL: 86400,
+  },
+  turbopack: {
+    root: path.resolve(__dirname),
   },
 }
 

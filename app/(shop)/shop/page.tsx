@@ -4,6 +4,8 @@ import { ProductFilters } from '@/components/product/ProductFilters'
 import { Suspense } from 'react'
 import type { Product, ProductCategory } from '@/lib/types'
 
+export const revalidate = 3600
+
 type Props = {
   searchParams: Promise<{ category?: string }>
 }
@@ -27,8 +29,8 @@ export default async function ShopPage({ searchParams }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="mb-10">
-        <h1 className="font-serif text-4xl text-[#2D1A0E] mb-2">{heading}</h1>
-        <p className="text-[#8C6B50]">
+        <h1 className="font-serif text-4xl font-light text-[#F5F0E8] mb-2">{heading}</h1>
+        <p className="text-[#C9A84C]/60 text-sm tracking-wider">
           {products?.length ?? 0} product{(products?.length ?? 0) !== 1 ? 's' : ''}
         </p>
       </div>

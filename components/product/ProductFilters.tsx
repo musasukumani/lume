@@ -30,10 +30,10 @@ export function ProductFilters() {
         <button
           key={value}
           onClick={() => setCategory(value)}
-          className={`px-5 py-2 rounded-full text-sm font-medium transition-colors border ${
+          className={`px-5 py-2 text-xs tracking-widest uppercase font-light transition-colors border ${
             active === value
-              ? 'bg-[#3D1F0F] text-white border-[#3D1F0F]'
-              : 'bg-transparent text-[#8C6B50] border-[#8C6B50]/30 hover:border-[#3D1F0F] hover:text-[#3D1F0F]'
+              ? 'bg-gradient-to-r from-[#C9A84C] to-[#A8883A] text-[#0D0D0D] border-transparent font-medium'
+              : 'bg-transparent text-white/40 border-white/10 hover:border-[#C9A84C]/50 hover:text-[#C9A84C]'
           }`}
         >
           {label}

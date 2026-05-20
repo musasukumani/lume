@@ -15,11 +15,12 @@ export function NewsletterStrip() {
 
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
-      <h2 className="font-serif text-3xl text-[#2D1A0E] mb-3">Stay Updated, Stay Radiant</h2>
-      <p className="text-[#8C6B50] mb-8 text-sm">Get early access to new launches and exclusive offers.</p>
+      <p className="text-xs tracking-[0.3em] uppercase text-[#C9A84C] mb-4 font-light">Newsletter</p>
+      <h2 className="font-serif text-3xl font-light text-[#F5F0E8] mb-3">Stay Updated, Stay Radiant</h2>
+      <p className="text-white/40 mb-8 text-sm">Get early access to new launches and exclusive offers.</p>
 
       {submitted ? (
-        <p className="text-[#3D1F0F] font-medium">You&apos;re on the list! ✓</p>
+        <p className="text-[#C9A84C] font-light tracking-widest">You&apos;re on the list ✓</p>
       ) : (
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
           <input
@@ -28,11 +29,11 @@ export function NewsletterStrip() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your@email.com"
-            className="flex-1 px-4 py-2 border border-[#8C6B50]/30 rounded bg-[#FDFAF6] text-[#2D1A0E] placeholder:text-[#8C6B50]/60 focus:outline-none focus:ring-1 focus:ring-[#3D1F0F]"
+            className="flex-1 px-4 py-2 border border-white/10 bg-white/[0.04] text-[#F5F0E8] placeholder:text-white/25 focus:outline-none focus:border-[#C9A84C]/50 text-sm"
           />
           <button
             type="submit"
-            className="bg-[#3D1F0F] text-white px-6 py-2 rounded text-sm font-medium hover:bg-[#2D1A0E] transition-colors"
+            className="bg-gradient-to-r from-[#C9A84C] to-[#A8883A] text-[#0D0D0D] px-6 py-2 text-xs tracking-widest uppercase font-semibold hover:opacity-90 transition-opacity"
           >
             Subscribe
           </button>

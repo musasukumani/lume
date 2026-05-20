@@ -1,14 +1,20 @@
 import { createClient } from '@/lib/supabase/server'
+import { createClient as createBrowserClient } from '@supabase/supabase-js'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { AddToCart } from '@/components/product/AddToCart'
 import { RelatedProducts } from '@/components/product/RelatedProducts'
 import type { Product } from '@/lib/types'
 
+export const revalidate = 3600
+
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  const supabase = await createClient()
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  )
   const { data } = await supabase.from('products').select('slug')
   return (data ?? []).map(({ slug }) => ({ slug }))
 }
@@ -30,37 +36,41 @@ export default async function ProductDetailPage({ params }: Props) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <div className="grid md:grid-cols-2 gap-12 items-start">
-        <div className="relative aspect-square rounded-lg overflow-hidden bg-[#FDFAF6] border border-[#8C6B50]/20">
+        <div
+          className="relative aspect-square overflow-hidden border border-white/[0.07]"
+          style={{ background: 'linear-gradient(135deg, #1E1208, #2A1A0A)' }}
+        >
           <Image
             src={p.image_url}
             alt={p.name}
             fill
+            quality={85}
             className="object-cover"
             priority
             sizes="(max-width: 768px) 100vw, 50vw"
           />
           {p.badge && (
-            <span className="absolute top-4 left-4 bg-[#3D1F0F] text-white text-xs px-3 py-1 rounded">
+            <span className="absolute top-4 left-4 border border-[#C9A84C]/50 text-[#C9A84C] text-xs px-3 py-1 tracking-widest uppercase font-light">
               {p.badge}
             </span>
           )}
         </div>
 
         <div className="py-4">
-          <p className="text-xs text-[#8C6B50] uppercase tracking-widest mb-3 capitalize">
+          <p className="text-xs text-[#C9A84C]/70 uppercase tracking-[0.3em] mb-3 font-light capitalize">
             {p.category}
           </p>
-          <h1 className="font-serif text-4xl text-[#2D1A0E] mb-4">{p.name}</h1>
-          <p className="text-2xl font-medium text-[#2D1A0E] mb-6">${p.price.toFixed(2)}</p>
-          <p className="text-[#8C6B50] leading-relaxed">{p.description}</p>
+          <h1 className="font-serif text-4xl font-light text-[#F5F0E8] mb-4">{p.name}</h1>
+          <p className="text-2xl font-light text-[#E8D5B0] mb-6">${p.price.toFixed(2)}</p>
+          <p className="text-white/50 leading-relaxed text-sm">{p.description}</p>
           <AddToCart product={p} />
-          <div className="mt-8 pt-8 border-t border-[#8C6B50]/20 grid grid-cols-2 gap-4">
-            <div className="text-sm text-[#8C6B50]">
-              <p className="font-medium text-[#2D1A0E] mb-1">Free Shipping</p>
+          <div className="mt-8 pt-8 border-t border-white/[0.07] grid grid-cols-2 gap-4">
+            <div className="text-sm text-white/40">
+              <p className="text-[#C9A84C]/70 text-xs uppercase tracking-widest mb-1 font-light">Free Shipping</p>
               On all orders
             </div>
-            <div className="text-sm text-[#8C6B50]">
-              <p className="font-medium text-[#2D1A0E] mb-1">30-Day Returns</p>
+            <div className="text-sm text-white/40">
+              <p className="text-[#C9A84C]/70 text-xs uppercase tracking-widest mb-1 font-light">30-Day Returns</p>
               Easy returns
             </div>
           </div>
