@@ -70,6 +70,8 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function ReviewsSection() {
+  const [featured, ...rest] = reviews
+
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div className="flex items-end justify-between mb-10">
@@ -89,10 +91,26 @@ export function ReviewsSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {reviews.map((review) => (
+        {/* Featured review — larger, editorial pull-quote style */}
+        <div className="sm:col-span-2 lg:col-span-1 relative bg-white/[0.03] border border-white/[0.10] p-7 flex flex-col gap-4 hover:border-white/[0.18] transition-colors duration-300 overflow-hidden">
+          <span className="absolute top-2 right-4 font-serif text-[7rem] leading-none text-white/[0.04] select-none pointer-events-none">&ldquo;</span>
+          <StarRating rating={featured.rating} />
+          <p className="font-serif text-base italic font-light text-[#F5F0E8]/80 leading-relaxed flex-1 relative z-10">
+            {featured.text}
+          </p>
+          <div className="border-t border-white/[0.07] pt-4 flex items-center justify-between">
+            <div>
+              <p className="text-[#E8D5B0] text-sm font-light">{featured.name}</p>
+              <p className="text-white/30 text-xs tracking-widest uppercase mt-0.5">{featured.skinType} skin</p>
+            </div>
+            <p className="text-[#C9A84C]/60 text-xs tracking-wider uppercase text-right">{featured.product}</p>
+          </div>
+        </div>
+
+        {rest.map((review) => (
           <div
             key={review.id}
-            className="bg-white/[0.03] border border-white/[0.07] p-6 flex flex-col gap-4"
+            className="bg-white/[0.03] border border-white/[0.07] p-6 flex flex-col gap-4 hover:border-white/[0.14] transition-colors duration-300"
           >
             <StarRating rating={review.rating} />
             <p className="text-white/60 text-sm leading-relaxed flex-1">{review.text}</p>

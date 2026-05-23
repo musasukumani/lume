@@ -4,6 +4,7 @@ import { NewsletterStrip } from '@/components/home/NewsletterStrip'
 import { ReviewsSection } from '@/components/home/ReviewsSection'
 import { ExpertEndorsement } from '@/components/home/ExpertEndorsement'
 import { SocialFeed } from '@/components/home/SocialFeed'
+import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/lib/types'
@@ -64,79 +65,104 @@ export default async function HomePage() {
       </section>
 
       {/* Trust Badges */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {/* Natural Formula */}
-          <div className="text-center py-8 px-4 bg-white/[0.04] border border-white/[0.07] flex flex-col items-center gap-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-            </svg>
-            <p className="text-xs font-light text-white/50 tracking-[0.15em] uppercase">Natural Formula</p>
+      <ScrollReveal>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              {
+                label: 'Natural Formula',
+                icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
+                    <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Cruelty Free',
+                icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Expert Approved',
+                icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <circle cx="12" cy="8" r="6"/>
+                    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
+                  </svg>
+                ),
+              },
+              {
+                label: 'Free Shipping',
+                icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/>
+                    <path d="M14 9h4l4 4v4h-8V9z"/>
+                    <circle cx="7" cy="18" r="2"/>
+                    <circle cx="17" cy="18" r="2"/>
+                  </svg>
+                ),
+              },
+            ].map(({ label, icon }) => (
+              <div
+                key={label}
+                className="text-center py-8 px-4 bg-white/[0.04] border border-white/[0.07] flex flex-col items-center gap-4 hover:border-white/[0.13] hover:bg-white/[0.06] transition-all duration-300"
+              >
+                {icon}
+                <p className="text-xs font-light text-white/50 tracking-[0.15em] uppercase">{label}</p>
+              </div>
+            ))}
           </div>
-
-          {/* Cruelty Free */}
-          <div className="text-center py-8 px-4 bg-white/[0.04] border border-white/[0.07] flex flex-col items-center gap-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
-            </svg>
-            <p className="text-xs font-light text-white/50 tracking-[0.15em] uppercase">Cruelty Free</p>
-          </div>
-
-          {/* Expert Approved */}
-          <div className="text-center py-8 px-4 bg-white/[0.04] border border-white/[0.07] flex flex-col items-center gap-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="8" r="6"/>
-              <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/>
-            </svg>
-            <p className="text-xs font-light text-white/50 tracking-[0.15em] uppercase">Expert Approved</p>
-          </div>
-
-          {/* Free Shipping */}
-          <div className="text-center py-8 px-4 bg-white/[0.04] border border-white/[0.07] flex flex-col items-center gap-4">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M5 18H3c-.6 0-1-.4-1-1V7c0-.6.4-1 1-1h10c.6 0 1 .4 1 1v11"/>
-              <path d="M14 9h4l4 4v4h-8V9z"/>
-              <circle cx="7" cy="18" r="2"/>
-              <circle cx="17" cy="18" r="2"/>
-            </svg>
-            <p className="text-xs font-light text-white/50 tracking-[0.15em] uppercase">Free Shipping</p>
-          </div>
-        </div>
-      </section>
+        </section>
+      </ScrollReveal>
 
       {/* Tagline */}
-      <section className="text-center py-8 px-4">
-        <p className="font-serif text-2xl italic font-light text-[#C9A84C]/70">
-          &ldquo;Refresh your skin, love yourself, renew your glow.&rdquo;
-        </p>
-      </section>
+      <ScrollReveal>
+        <section className="text-center py-8 px-4">
+          <p className="font-serif text-2xl italic font-light text-[#C9A84C]/70">
+            &ldquo;Refresh your skin, love yourself, renew your glow.&rdquo;
+          </p>
+        </section>
+      </ScrollReveal>
 
       {/* Expert Endorsement */}
-      <ExpertEndorsement />
+      <ScrollReveal>
+        <ExpertEndorsement />
+      </ScrollReveal>
 
       {/* Featured Products */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex items-end justify-between mb-8">
-          <h2 className="font-serif text-3xl font-light text-[#F5F0E8]">Bestsellers</h2>
-          <Link
-            href="/shop"
-            className="text-xs text-[#C9A84C] hover:text-[#E8D5B0] transition-colors tracking-widest uppercase"
-          >
-            View all →
-          </Link>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {(featured as Product[] ?? []).map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </section>
+      <ScrollReveal>
+        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-end justify-between mb-8">
+            <div>
+              <p className="text-[#C9A84C] text-xs uppercase tracking-[0.3em] mb-2 font-light">Our Collection</p>
+              <h2 className="font-serif text-3xl font-light text-[#F5F0E8]">Bestsellers</h2>
+            </div>
+            <Link
+              href="/shop"
+              className="text-xs text-[#C9A84C] hover:text-[#E8D5B0] transition-colors tracking-widest uppercase"
+            >
+              View all →
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {(featured as Product[] ?? []).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </section>
+      </ScrollReveal>
 
       {/* Customer Reviews */}
-      <ReviewsSection />
+      <ScrollReveal>
+        <ReviewsSection />
+      </ScrollReveal>
 
       {/* Brand Story Banner */}
+      <ScrollReveal>
       <section className="bg-[#0A0A0A] border-y border-white/5 my-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 grid md:grid-cols-2 gap-12 items-center">
           <div>
@@ -170,9 +196,12 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+      </ScrollReveal>
 
       {/* Social Feed */}
-      <SocialFeed />
+      <ScrollReveal>
+        <SocialFeed />
+      </ScrollReveal>
 
       {/* Newsletter */}
       <NewsletterStrip />

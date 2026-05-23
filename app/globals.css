@@ -9,6 +9,8 @@
   --color-lume-gold-dark: #A8883A;
   --color-lume-text: #F5F0E8;
   --color-lume-muted: #E8D5B0;
+  --color-lume-sage: #8FA898;
+  --color-lume-warm: #1C120A;
 }
 
 html {
@@ -78,4 +80,33 @@ main {
 
 .lume-orb-text {
   animation: lume-text-appear 0.9s ease-out 0.65s both;
+}
+
+/* ─── Scroll reveal ─── */
+.lume-fade-up {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lume-fade-up.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lume-fade-up {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .lume-hero-text,
+  .lume-orb,
+  .lume-orb-text {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

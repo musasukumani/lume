@@ -5,14 +5,18 @@ export function ExpertEndorsement() {
 
         {/* Dermatologist quote */}
         <div className="grid md:grid-cols-3 gap-10 items-start mb-14">
-          <div className="md:col-span-2">
+          <div className="md:col-span-2 relative">
             <p className="text-[#C9A84C] text-xs uppercase tracking-[0.3em] mb-6 font-light">
               Expert Approved
             </p>
-            <blockquote className="font-serif text-2xl sm:text-3xl font-light text-[#F5F0E8] leading-relaxed mb-6">
-              &ldquo;Lumé formulations strike a rare balance — botanically rich yet clinically
+            {/* Decorative large quotation mark */}
+            <span className="absolute -top-2 -left-1 font-serif text-[9rem] leading-none text-[#C9A84C]/[0.07] select-none pointer-events-none">
+              &ldquo;
+            </span>
+            <blockquote className="relative z-10 font-serif text-2xl sm:text-3xl font-light text-[#F5F0E8] leading-relaxed mb-6 max-w-2xl">
+              Lumé formulations strike a rare balance — botanically rich yet clinically
               sound. The ingredient profiles are clean, non-irritating, and effective across
-              all skin types. I recommend them to my patients without hesitation.&rdquo;
+              all skin types. I recommend them to my patients without hesitation.
             </blockquote>
             <div className="flex items-center gap-4">
               <div className="w-10 h-px bg-[#C9A84C]/40" />
@@ -25,20 +29,22 @@ export function ExpertEndorsement() {
             </div>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3">
             {[
-              { label: 'Dermatologist Tested', icon: '✦' },
-              { label: 'Allergy Tested', icon: '✦' },
-              { label: 'Non-Comedogenic', icon: '✦' },
-              { label: 'pH Balanced Formulas', icon: '✦' },
-            ].map((item) => (
+              'Dermatologist Tested',
+              'Allergy Tested',
+              'Non-Comedogenic',
+              'pH Balanced Formulas',
+            ].map((label) => (
               <div
-                key={item.label}
+                key={label}
                 className="flex items-center gap-3 py-3 px-4 border border-white/[0.07] bg-white/[0.03]"
               >
-                <span className="text-[#C9A84C] text-xs">{item.icon}</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#8FA898" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
                 <span className="text-white/55 text-xs tracking-widest uppercase font-light">
-                  {item.label}
+                  {label}
                 </span>
               </div>
             ))}
@@ -54,7 +60,7 @@ export function ExpertEndorsement() {
             {['Vogue', 'Allure', 'Byrdie', 'Refinery29', 'Into The Gloss'].map((pub) => (
               <span
                 key={pub}
-                className="font-serif text-lg font-light text-white/20 hover:text-white/40 transition-colors tracking-wider"
+                className="font-serif text-lg font-light text-white/25 hover:text-white/55 transition-colors duration-300 tracking-wider cursor-default"
               >
                 {pub}
               </span>

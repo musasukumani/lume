@@ -3,7 +3,14 @@ import Link from 'next/link'
 export function Footer() {
   return (
     <footer className="bg-[#0A0A0A] border-t border-white/5 text-white/40 mt-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-10">
+      {/* Decorative top element */}
+      <div className="flex items-center justify-center pt-10 pb-0">
+        <div className="h-px w-24 bg-gradient-to-r from-transparent to-white/[0.06]" />
+        <span className="px-5 text-[#C9A84C]/25 text-xs">✦</span>
+        <div className="h-px w-24 bg-gradient-to-l from-transparent to-white/[0.06]" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-2 md:grid-cols-4 gap-10">
         <div className="col-span-2 md:col-span-1">
           <p className="font-serif text-2xl text-[#C9A84C] tracking-widest mb-3">Lumé</p>
           <p className="text-sm leading-relaxed mb-4">

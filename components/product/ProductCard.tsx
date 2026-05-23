@@ -9,11 +9,23 @@ type Props = {
   product: Product
 }
 
+function StarRating() {
+  return (
+    <span className="flex gap-0.5">
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} width="10" height="10" viewBox="0 0 24 24" fill="#C9A84C" stroke="none">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      ))}
+    </span>
+  )
+}
+
 export function ProductCard({ product }: Props) {
   const addItem = useCartStore((s) => s.addItem)
 
   return (
-    <div className="group relative bg-white/[0.04] border border-white/[0.07] overflow-hidden flex flex-col">
+    <div className="group relative bg-white/[0.04] border border-white/[0.07] overflow-hidden flex flex-col cursor-pointer hover:border-white/[0.15] hover:-translate-y-1 transition-all duration-300">
       {/* Stretched link covers entire card */}
       <Link href={`/shop/${product.slug}`} className="absolute inset-0 z-10" aria-label={product.name} />
 
@@ -41,7 +53,7 @@ export function ProductCard({ product }: Props) {
           {product.name}
         </h3>
         <div className="flex items-center gap-1.5 mb-2">
-          <span className="text-[#C9A84C] text-xs tracking-wide">★★★★★</span>
+          <StarRating />
           <span className="text-white/25 text-xs">4.9</span>
         </div>
         <div className="mt-auto flex items-center justify-between pt-3 border-t border-white/[0.07]">
@@ -49,7 +61,7 @@ export function ProductCard({ product }: Props) {
           {/* z-20 keeps button above the stretched link */}
           <button
             onClick={() => addItem(product)}
-            className="relative z-20 text-xs tracking-widest uppercase border border-[#C9A84C]/40 text-[#C9A84C] px-4 py-2 hover:bg-[#C9A84C]/10 transition-colors"
+            className="relative z-20 text-xs tracking-widest uppercase border border-[#C9A84C]/40 text-[#C9A84C] px-4 py-2 hover:bg-[#C9A84C]/10 transition-colors cursor-pointer"
           >
             Add
           </button>
