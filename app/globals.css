@@ -96,6 +96,17 @@ main {
   transform: translateY(0);
 }
 
+/* ─── Publication marquee ─── */
+@keyframes lume-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.lume-marquee {
+  animation: lume-marquee 32s linear infinite;
+  will-change: transform;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .lume-fade-up {
     opacity: 1;
@@ -108,5 +119,8 @@ main {
     animation: none;
     opacity: 1;
     transform: none;
+  }
+  .lume-marquee {
+    animation: none;
   }
 }

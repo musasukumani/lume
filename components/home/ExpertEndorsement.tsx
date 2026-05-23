@@ -1,3 +1,5 @@
+import { PublicationsMarquee } from '@/components/ui/PublicationsMarquee'
+
 export function ExpertEndorsement() {
   return (
     <section className="bg-[#0A0A0A] border-y border-white/5 py-16 px-4">
@@ -53,19 +55,10 @@ export function ExpertEndorsement() {
 
         {/* As seen in */}
         <div className="border-t border-white/5 pt-10">
-          <p className="text-center text-white/20 text-xs tracking-[0.4em] uppercase mb-8">
+          <p className="text-center text-white/35 text-xs tracking-[0.4em] uppercase mb-8">
             As Seen In
           </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 sm:gap-14">
-            {['Vogue', 'Allure', 'Byrdie', 'Refinery29', 'Into The Gloss'].map((pub) => (
-              <span
-                key={pub}
-                className="font-serif text-lg font-light text-white/25 hover:text-white/55 transition-colors duration-300 tracking-wider cursor-default"
-              >
-                {pub}
-              </span>
-            ))}
-          </div>
+          <PublicationsMarquee />
         </div>
 
       </div>
