@@ -112,10 +112,10 @@ export default function OurStoryPage() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-px bg-white/[0.05]">
-          {values.map(({ label, body }, i) => (
+          {values.slice(0, -1).map(({ label, body }, i) => (
             <div
               key={label}
-              className={`bg-[#0D0D0D] p-10 flex flex-col gap-4${i === values.length - 1 && values.length % 2 !== 0 ? ' md:col-span-2 md:max-w-2xl md:mx-auto' : ''}`}
+              className="bg-[#0D0D0D] p-10 flex flex-col gap-4"
             >
               <span className="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-light">{String(i + 1).padStart(2, '0')}</span>
               <h3 className="font-serif text-2xl font-light text-[#F5F0E8]">{label}</h3>
@@ -123,6 +123,42 @@ export default function OurStoryPage() {
             </div>
           ))}
         </div>
+
+        {/* Business Culture — full-width with flanking images */}
+        {(() => {
+          const last = values[values.length - 1]
+          return (
+            <div className="mt-px grid md:grid-cols-[1fr_2fr_1fr] bg-white/[0.05] gap-px">
+              <div className="relative overflow-hidden min-h-[280px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80&auto=format&fit=crop"
+                  alt="Lumé team collaborating"
+                  fill
+                  quality={80}
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-[#0D0D0D]/30" />
+              </div>
+              <div className="bg-[#0D0D0D] p-10 flex flex-col gap-4">
+                <span className="text-[#C9A84C] text-xs uppercase tracking-[0.3em] font-light">{String(values.length).padStart(2, '0')}</span>
+                <h3 className="font-serif text-2xl font-light text-[#F5F0E8]">{last.label}</h3>
+                <p className="text-white/45 leading-relaxed text-sm">{last.body}</p>
+              </div>
+              <div className="relative overflow-hidden min-h-[280px]">
+                <Image
+                  src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80&auto=format&fit=crop"
+                  alt="Lumé remote team at work"
+                  fill
+                  quality={80}
+                  className="object-cover object-center"
+                  sizes="(max-width: 768px) 100vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-[#0D0D0D]/30" />
+              </div>
+            </div>
+          )
+        })()}
       </section>
 
       {/* Closing CTA */}

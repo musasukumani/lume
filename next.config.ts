@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
       },
     ],
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 80, 82, 85],
+    qualities: [75, 78, 80, 82, 85],
     minimumCacheTTL: 86400,
   },
   turbopack: {
