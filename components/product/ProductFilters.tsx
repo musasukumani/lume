@@ -21,7 +21,8 @@ export function ProductFilters() {
     } else {
       params.set('category', value)
     }
-    router.push(`/shop?${params.toString()}`)
+    const query = params.toString()
+    router.push(query ? `/shop?${query}` : '/shop')
   }
 
   return (

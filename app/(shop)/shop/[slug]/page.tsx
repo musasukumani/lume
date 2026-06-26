@@ -6,7 +6,7 @@ import { AddToCart } from '@/components/product/AddToCart'
 import { RelatedProducts } from '@/components/product/RelatedProducts'
 import { ingredientsByCategory } from '@/lib/ingredients'
 import type { Product } from '@/lib/types'
-import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { hasSupabaseProductSource } from '@/lib/supabase/config'
 import { demoProducts, getDemoProductBySlug } from '@/lib/products'
 
 export const revalidate = 3600
@@ -14,7 +14,7 @@ export const revalidate = 3600
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
-  if (!hasSupabaseEnv()) {
+  if (!hasSupabaseProductSource()) {
     return demoProducts.map(({ slug }) => ({ slug }))
   }
 
@@ -35,7 +35,7 @@ export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params
   let product: Product | null = getDemoProductBySlug(slug)
 
-  if (hasSupabaseEnv()) {
+  if (hasSupabaseProductSource()) {
     const supabase = await createClient()
     const { data, error } = await supabase
       .from('products')

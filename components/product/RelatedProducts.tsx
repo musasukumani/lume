@@ -1,7 +1,7 @@
 import { createClient } from '@/lib/supabase/server'
 import { ProductCard } from './ProductCard'
 import type { Product, ProductCategory } from '@/lib/types'
-import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { hasSupabaseProductSource } from '@/lib/supabase/config'
 import { getRelatedDemoProducts } from '@/lib/products'
 
 type Props = { category: string; excludeSlug: string }
@@ -9,7 +9,7 @@ type Props = { category: string; excludeSlug: string }
 export async function RelatedProducts({ category, excludeSlug }: Props) {
   let data: Product[] = getRelatedDemoProducts(category as ProductCategory, excludeSlug)
 
-  if (hasSupabaseEnv()) {
+  if (hasSupabaseProductSource()) {
     const supabase = await createClient()
     const { data: products, error } = await supabase
       .from('products')

@@ -8,7 +8,7 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/lib/types'
-import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { hasSupabaseProductSource } from '@/lib/supabase/config'
 import { demoProducts } from '@/lib/products'
 
 export const revalidate = 3600
@@ -16,7 +16,7 @@ export const revalidate = 3600
 export default async function HomePage() {
   let featured: Product[] = demoProducts.filter((product) => product.badge === 'Bestseller')
 
-  if (hasSupabaseEnv()) {
+  if (hasSupabaseProductSource()) {
     const supabase = await createClient()
     const { data, error } = await supabase
       .from('products')
