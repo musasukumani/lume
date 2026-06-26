@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export const metadata = { title: 'Our Story — Lumé' }
 
@@ -169,13 +170,13 @@ export default function OurStoryPage() {
             Skin that glows,{' '}
             <em className="italic text-[#E8D5B0]">naturally.</em>
           </h2>
-          <a
+          <Link
             href="/shop"
             className="inline-block px-10 py-4 text-xs tracking-widest uppercase font-semibold text-[#0D0D0D] hover:opacity-90 transition-opacity"
             style={{ background: 'linear-gradient(135deg, #C9A84C, #A8883A)' }}
           >
             Shop the Collection
-          </a>
+          </Link>
         </div>
       </section>
     </>

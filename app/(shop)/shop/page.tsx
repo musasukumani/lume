@@ -3,6 +3,8 @@ import { ProductGrid } from '@/components/product/ProductGrid'
 import { ProductFilters } from '@/components/product/ProductFilters'
 import { Suspense } from 'react'
 import type { Product, ProductCategory } from '@/lib/types'
+import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { getDemoProducts } from '@/lib/products'
 
 export const revalidate = 3600
 
@@ -12,15 +14,22 @@ type Props = {
 
 export default async function ShopPage({ searchParams }: Props) {
   const { category } = await searchParams
-  const supabase = await createClient()
+  let products: Product[] = getDemoProducts(category)
 
-  let query = supabase.from('products').select('*').order('name')
+  if (hasSupabaseEnv()) {
+    const supabase = await createClient()
+    let query = supabase.from('products').select('*').order('name')
 
-  if (category && category !== 'all') {
-    query = query.eq('category', category as ProductCategory)
+    if (category && category !== 'all') {
+      query = query.eq('category', category as ProductCategory)
+    }
+
+    const { data, error } = await query
+
+    if (!error && data && data.length > 0) {
+      products = data as Product[]
+    }
   }
-
-  const { data: products } = await query
 
   const heading = category
     ? category.charAt(0).toUpperCase() + category.slice(1) + 's'
@@ -41,7 +50,7 @@ export default async function ShopPage({ searchParams }: Props) {
         </div>
       </Suspense>
 
-      <ProductGrid products={(products as Product[]) ?? []} />
+      <ProductGrid products={products} />
     </div>
   )
 }

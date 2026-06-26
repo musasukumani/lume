@@ -20,11 +20,16 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://vercel.com/musa-sukumani-s-projects/lume'),
   title: 'Lumé — Natural Skincare',
   description: 'Skin that glows, naturally. Premium skincare formulated for every skin type.',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Lumé — Natural Skincare',
     description: 'Skin that glows, naturally.',
+    url: '/',
     type: 'website',
   },
 }

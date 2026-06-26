@@ -14,6 +14,8 @@ export function CartSummary() {
 
   useEffect(() => {
     const supabase = createClient()
+    if (!supabase) return
+
     supabase.auth.getUser().then(({ data }) => {
       setIsLoggedIn(!!data.user)
     })

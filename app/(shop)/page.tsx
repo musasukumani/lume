@@ -8,17 +8,26 @@ import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import Link from 'next/link'
 import Image from 'next/image'
 import type { Product } from '@/lib/types'
+import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { demoProducts } from '@/lib/products'
 
 export const revalidate = 3600
 
 export default async function HomePage() {
-  const supabase = await createClient()
+  let featured: Product[] = demoProducts.filter((product) => product.badge === 'Bestseller')
 
-  const { data: featured } = await supabase
-    .from('products')
-    .select('*')
-    .eq('badge', 'Bestseller')
-    .limit(4)
+  if (hasSupabaseEnv()) {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('badge', 'Bestseller')
+      .limit(4)
+
+    if (!error && data && data.length > 0) {
+      featured = data as Product[]
+    }
+  }
 
   return (
     <>
@@ -149,7 +158,7 @@ export default async function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {(featured as Product[] ?? []).map((product) => (
+            {featured.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>

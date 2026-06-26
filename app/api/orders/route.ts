@@ -1,4 +1,5 @@
 import { createClient } from '@/lib/supabase/server'
+import { hasSupabaseEnv } from '@/lib/supabase/config'
 import { NextResponse } from 'next/server'
 
 type OrderItemInput = {
@@ -20,6 +21,13 @@ type OrderBody = {
 }
 
 export async function POST(request: Request) {
+  if (!hasSupabaseEnv()) {
+    return NextResponse.json(
+      { error: 'Supabase credentials are not configured for local development' },
+      { status: 503 }
+    )
+  }
+
   const supabase = await createClient()
 
   const { data: { user }, error: authError } = await supabase.auth.getUser()

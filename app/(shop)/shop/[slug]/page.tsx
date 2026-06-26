@@ -6,29 +6,47 @@ import { AddToCart } from '@/components/product/AddToCart'
 import { RelatedProducts } from '@/components/product/RelatedProducts'
 import { ingredientsByCategory } from '@/lib/ingredients'
 import type { Product } from '@/lib/types'
+import { hasSupabaseEnv } from '@/lib/supabase/config'
+import { demoProducts, getDemoProductBySlug } from '@/lib/products'
 
 export const revalidate = 3600
 
 type Props = { params: Promise<{ slug: string }> }
 
 export async function generateStaticParams() {
+  if (!hasSupabaseEnv()) {
+    return demoProducts.map(({ slug }) => ({ slug }))
+  }
+
   const supabase = createBrowserClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
   )
-  const { data } = await supabase.from('products').select('slug')
-  return (data ?? []).map(({ slug }) => ({ slug }))
+  const { data, error } = await supabase.from('products').select('slug')
+
+  if (error || !data || data.length === 0) {
+    return demoProducts.map(({ slug }) => ({ slug }))
+  }
+
+  return data.map(({ slug }) => ({ slug }))
 }
 
 export default async function ProductDetailPage({ params }: Props) {
   const { slug } = await params
-  const supabase = await createClient()
+  let product: Product | null = getDemoProductBySlug(slug)
 
-  const { data: product } = await supabase
-    .from('products')
-    .select('*')
-    .eq('slug', slug)
-    .single()
+  if (hasSupabaseEnv()) {
+    const supabase = await createClient()
+    const { data, error } = await supabase
+      .from('products')
+      .select('*')
+      .eq('slug', slug)
+      .single()
+
+    if (!error && data) {
+      product = data as Product
+    }
+  }
 
   if (!product) notFound()
 

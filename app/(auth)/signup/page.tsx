@@ -21,6 +21,12 @@ function SignupForm() {
     setLoading(true)
 
     const supabase = createClient()
+    if (!supabase) {
+      setError('Supabase credentials are not configured for local development.')
+      setLoading(false)
+      return
+    }
+
     const { error } = await supabase.auth.signUp({ email, password })
 
     if (error) {

@@ -2,6 +2,7 @@
   "name": "lume",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://vercel.com/musa-sukumani-s-projects/lume",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
